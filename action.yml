@@ -35,9 +35,7 @@ inputs:
 
 runs:
   using: "composite"
-  steps:
-    - uses: actions/checkout@v1
-    
+  steps:    
     - name: Copy repository contents
       uses: appleboy/scp-action@f57f59fba9f7f05a7857eeb06d556738cc696279
       env:
