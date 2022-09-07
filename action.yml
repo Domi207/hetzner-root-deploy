@@ -44,7 +44,7 @@ runs:
         USERNAME: ${{ inputs.username }}
         PORT: ${{ inputs.port }}
         PASSWORD: ${{ inputs.password }}
-        script: rm -r ${{ inputs.remote-path }}
+        script: rm -r -f ${{ inputs.remote-path }}
         
     - name: Copy repository contents
       uses: appleboy/scp-action@f57f59fba9f7f05a7857eeb06d556738cc696279
