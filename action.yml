@@ -58,7 +58,6 @@ runs:
         target: ${{ inputs.remote-path }}
         
     - name: Run npm clean-install
-      if: ${{ inputs.automatic-pre-deploy == true && inputs.yarn == false }}
       uses: appleboy/ssh-action@1a8b3784eaa665f677fa114edd5683bb6a6bfaa8
       with:
         HOST: ${{ inputs.host }}
@@ -66,16 +65,6 @@ runs:
         PORT: ${{ inputs.port }}
         PASSWORD: ${{ inputs.password }}
         script: cd ${{ inputs.remote-path }} && npm ci
-        
-    - name: Run yarn install
-      if: ${{ inputs.automatic-pre-deploy == true && inputs.yarn == true }}
-      uses: appleboy/ssh-action@1a8b3784eaa665f677fa114edd5683bb6a6bfaa8
-      with:
-        HOST: ${{ inputs.host }}
-        USERNAME: ${{ inputs.username }}
-        PORT: ${{ inputs.port }}
-        PASSWORD: ${{ inputs.password }}
-        script: cd ${{ inputs.remote-path }} && yarn install
         
     - name: Restart remote application
       uses: appleboy/ssh-action@1a8b3784eaa665f677fa114edd5683bb6a6bfaa8
