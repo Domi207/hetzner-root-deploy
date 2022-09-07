@@ -66,6 +66,15 @@ runs:
         PASSWORD: ${{ inputs.password }}
         script: cd ${{ inputs.remote-path }} && yarn install
         
+    - name: Run yarn build
+      uses: appleboy/ssh-action@1a8b3784eaa665f677fa114edd5683bb6a6bfaa8
+      with:
+        HOST: ${{ inputs.host }}
+        USERNAME: ${{ inputs.username }}
+        PORT: ${{ inputs.port }}
+        PASSWORD: ${{ inputs.password }}
+        script: cd ${{ inputs.remote-path }} && yarn run build
+        
     - name: Restart remote application
       uses: appleboy/ssh-action@1a8b3784eaa665f677fa114edd5683bb6a6bfaa8
       with:
