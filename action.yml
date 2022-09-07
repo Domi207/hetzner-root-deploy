@@ -37,8 +37,7 @@ runs:
   using: "composite"
   steps:    
           
-    - name: Run npm clean-install
-      if: ${{ inputs.automatic-pre-deploy == true && inputs.yarn == false }}
+    - name: Remove previous directory
       uses: appleboy/ssh-action@1a8b3784eaa665f677fa114edd5683bb6a6bfaa8
       with:
         HOST: ${{ inputs.host }}
