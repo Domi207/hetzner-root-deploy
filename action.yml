@@ -82,4 +82,4 @@ runs:
         USERNAME: ${{ inputs.username }}
         PORT: ${{ inputs.port }}
         PASSWORD: ${{ inputs.password }}
-        script: PM2_HOME=/etc/pm2daemon pm2 restart ${{ inputs.pm2-id }}
+        script: PM2_HOME=/etc/pm2daemon pm2 restart ${{ inputs.pm2-id }} --time
