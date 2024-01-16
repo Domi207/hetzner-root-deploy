@@ -36,14 +36,6 @@ inputs:
 runs:
   using: "composite"
   steps:    
-    - name: Stop remote application
-      uses: appleboy/ssh-action@1a8b3784eaa665f677fa114edd5683bb6a6bfaa8
-      with:
-        HOST: ${{ inputs.host }}
-        USERNAME: ${{ inputs.username }}
-        PORT: ${{ inputs.port }}
-        PASSWORD: ${{ inputs.password }}
-        script: PM2_HOME=/etc/pm2daemon pm2 stop ${{ inputs.pm2-id }} --time
     - name: Remove previous directory
       uses: appleboy/ssh-action@1a8b3784eaa665f677fa114edd5683bb6a6bfaa8
       with:
@@ -89,4 +81,4 @@ runs:
         USERNAME: ${{ inputs.username }}
         PORT: ${{ inputs.port }}
         PASSWORD: ${{ inputs.password }}
-        script: PM2_HOME=/etc/pm2daemon pm2 start ${{ inputs.pm2-id }} --time
+        script: PM2_HOME=/etc/pm2daemon pm2 restart ${{ inputs.pm2-id }} --time
